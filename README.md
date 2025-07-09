@@ -16,7 +16,7 @@ pipx install dist/clean_unwanted-0.1.0-py3-none-any.whl
 
 ```bash
 poetry install
-poetry run clean-unwanted clean /path/to/dir
+poetry run clean-unwanted /path/to/dir
 ```
 
 ---
@@ -32,7 +32,7 @@ Running the tool with just a directory will **recursively remove** these files:
 * `._*` (resource forks from macOS)
 
 ```bash
-clean-unwanted clean /path/to/dir
+clean-unwanted /path/to/dir
 ```
 
 ---
@@ -46,19 +46,19 @@ You can override the default list using one or more `--pattern` (or `-p`) flags.
 * Remove `.bak` and `.tmp` files:
 
   ```bash
-  clean-unwanted clean . -p "*.bak" -p "*.tmp"
+  clean-unwanted . -p "*.bak" -p "*.tmp"
   ```
 
 * Match a specific file name:
 
   ```bash
-  clean-unwanted clean . -p ".DS_Store"
+  clean-unwanted . -p ".DS_Store"
   ```
 
 * Match all hidden files:
 
   ```bash
-  clean-unwanted clean . -p ".*"
+  clean-unwanted . -p ".*"
   ```
 
 > Note: Specifying `--pattern` replaces the default list.
@@ -68,15 +68,15 @@ You can override the default list using one or more `--pattern` (or `-p`) flags.
 ## 🔧 Options
 
 ```bash
-Usage: clean-unwanted clean [OPTIONS] DIRECTORY
+Usage: clean-unwanted [OPTIONS] DIRECTORY
 
 Arguments:
-  DIRECTORY  Target directory to clean.  [required]
+  DIRECTORY  Target directory to clean.  [default: .]
 
 Options:
-  -p, --pattern TEXT  Glob-style pattern(s) to match (can use multiple).
+  -p, --pattern TEXT  File pattern(s) to remove (can use wildcards). [default: .DS_Store,Thumbs.db, .Spotlight-V100, desktop.ini, ._*]
   -v, --verbose       Print each matched file.
-  --dry-run           Show what would be deleted, without actually deleting.
+  --dry-run           Preview what will be deleted without removing anything.
   --help              Show this message and exit.
 ```
 
@@ -85,7 +85,7 @@ Options:
 ## 📂 Example
 
 ```bash
-clean-unwanted clean ~/Projects --dry-run --verbose
+clean-unwanted ~/Projects --dry-run --verbose
 ```
 
 ---

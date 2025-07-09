@@ -15,9 +15,7 @@ def match_pattern(file: str, patterns: list[str]) -> bool:
 
 @app.command("clean")
 def clean(
-    directory: Path = typer.Argument(
-        ..., exists=True, file_okay=False, help="Target directory to clean."
-    ),
+    directory: Path = typer.Argument(".", help="Target directory to clean."),
     patterns: list[str] = typer.Option(
         DEFAULT_PATTERNS,
         "--pattern",
@@ -34,6 +32,10 @@ def clean(
     ),
 ):
     """Clean unwanted files from the target directory."""
+    if not directory.exists() or not directory.is_dir():
+        typer.echo(f"Error: {directory} is not a valid directory.", err=True)
+        raise typer.Exit(code=1)
+
     deleted = 0
     matched_files = []
 
