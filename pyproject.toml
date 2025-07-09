@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "clean-unwanted"
+version = "0.1.0"
+description = "CLI tool to recursively delete unwanted files like .DS_Store, and Thumbs.db"
+authors = ["Daniel Rosenwald <danielrosenwald@gmail.com>"]
+readme = "README.md"
+packages = [{include = "clean_unwanted"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = {extras = ["all"], version = "^0.15.1"}
+click = ">=8.1.7"
+
+[tool.poetry.scripts]
+clean-unwanted = "clean_unwanted:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
