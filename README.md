@@ -9,14 +9,42 @@ A simple CLI tool to **recursively delete unwanted system or metadata files** (e
 ### With [pipx](https://github.com/pypa/pipx) (recommended)
 
 ```bash
+poetry install
+poetry build
 pipx install dist/clean_unwanted-0.1.0-py3-none-any.whl
 ````
+
+Then from anywhere, you can run:
+
+```bash
+clean-unwanted /path/to/dir
+```
 
 ### From source with Poetry
 
 ```bash
 poetry install
+```
+Then within the project directory, you can run the tool directly:
+
+```bash
 poetry run clean-unwanted /path/to/dir
+```
+
+---
+
+## Usage
+```bash
+Usage: clean-unwanted [OPTIONS] DIRECTORY
+
+Arguments:
+  DIRECTORY  Target directory to clean.  [default: .]
+
+Options:
+  -p, --pattern TEXT  File pattern(s) to remove (can use wildcards). [default: .DS_Store,Thumbs.db, .Spotlight-V100, desktop.ini, ._*]
+  -v, --verbose       Print each matched file.
+  --dry-run           Preview what will be deleted without removing anything.
+  --help              Show this message and exit.
 ```
 
 ---
@@ -65,28 +93,12 @@ You can override the default list using one or more `--pattern` (or `-p`) flags.
 
 ---
 
-## 🔧 Options
-
-```bash
-Usage: clean-unwanted [OPTIONS] DIRECTORY
-
-Arguments:
-  DIRECTORY  Target directory to clean.  [default: .]
-
-Options:
-  -p, --pattern TEXT  File pattern(s) to remove (can use wildcards). [default: .DS_Store,Thumbs.db, .Spotlight-V100, desktop.ini, ._*]
-  -v, --verbose       Print each matched file.
-  --dry-run           Preview what will be deleted without removing anything.
-  --help              Show this message and exit.
-```
-
----
-
 ## 📂 Example
 
 ```bash
-clean-unwanted ~/Projects --dry-run --verbose
+clean-unwanted %userprofile%/projects --dry-run --verbose -p "*.log" -p "Thumbs.db"
 ```
+This will preview the deletion of all `.log` files and `Thumbs.db` in the specified directory, showing each matched file without actually deleting anything.
 
 ---
 
