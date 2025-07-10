@@ -1,6 +1,6 @@
-# clean-unwanted
+# Clean Unwanted
 
-A simple CLI tool to **recursively delete unwanted system or metadata files** (e.g., `.DS_Store`, `Thumbs.db`, `._*`) from any directory. Built with [Typer](https://typer.tiangolo.com) for a clean command-line experience.
+A simple command-line tool to **recursively delete unwanted system or metadata files** (e.g., `.DS_Store`, `Thumbs.db`, `._*`) from any directory. Built with [Typer](https://typer.tiangolo.com).
 
 ---
 
