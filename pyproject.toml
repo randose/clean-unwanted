@@ -3,6 +3,7 @@ name = "clean-unwanted"
 version = "0.1.0"
 description = "CLI tool to recursively delete unwanted files like .DS_Store, and Thumbs.db"
 authors = ["Daniel Rosenwald <danielrosenwald@gmail.com>"]
+license = "MIT"
 readme = "README.md"
 packages = [{include = "clean_unwanted"}]
 
